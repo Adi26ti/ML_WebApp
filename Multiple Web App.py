@@ -9,9 +9,9 @@ import pickle
 import streamlit as st
 from streamlit_option_menu import option_menu
 
-a=pickle.load(open("E:/Aditi Proj/Multiple disease Prediction/Diabetes_model.sav",'rb'))
-b=pickle.load(open("E:/Aditi Proj/Multiple disease Prediction/Parkinsons_model.sav",'rb'))
-c=pickle.load(open("E:/Aditi Proj/Multiple disease Prediction/Heart_model.sav",'rb'))
+a=pickle.load(open('Diabetes_model.sav','rb'))
+b=pickle.load(open('Parkinsons_model.sav','rb'))
+c=pickle.load(open('Heart_model.sav','rb'))
 
 with st.sidebar:
     om=option_menu('Multiple Disease Prediction System',['Diabetes Prediction','Heart Diasease Prediction','Parkinsons Prediction'], icons=['activity','heart','person'], default_index=0)
@@ -78,7 +78,7 @@ if(om=='Heart Diasease Prediction'):
         thal=st.text_input('thal')    
     result=''
     if st.button('Heart Disease Result'):
-        result=b.predict([age,sex,cp,trestbps,chol,fbs,restecg,thalach,exang,oldpeak,slope,ca,thal])
+        result=c.predict([age,sex,cp,trestbps,chol,fbs,restecg,thalach,exang,oldpeak,slope,ca,thal])
     
         if(result[0]==1):
           result='Patient has Heart Disease'
@@ -135,7 +135,7 @@ if(om=='Parkinsons Prediction'):
         PPE=st.text_input('PPE')
     result=''
     if st.button('Parkinsons Result'):
-        result=c.predict([MDVPFo,MDVPFhi,MDVPFlo,MDVPJitterp,MDVPJitterAbs,MDVPRAP,MDVPPPQ,JitterDDP,MDVPShimmer,MDVPShimmerdb,ShimmerAPQ3,ShimmerAPQ5,MDVPAPQ,ShimmerDDA,NHR,HNR,RPDE,DFA,spread1,spreada,D2a,PPE])
+        result=b.predict([MDVPFo,MDVPFhi,MDVPFlo,MDVPJitterp,MDVPJitterAbs,MDVPRAP,MDVPPPQ,JitterDDP,MDVPShimmer,MDVPShimmerdb,ShimmerAPQ3,ShimmerAPQ5,MDVPAPQ,ShimmerDDA,NHR,HNR,RPDE,DFA,spread1,spreada,D2a,PPE])
         
         if(result[0]==1):
           result='Patient has Parkinsons Disease'
